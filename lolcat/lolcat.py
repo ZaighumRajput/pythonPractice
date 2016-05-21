@@ -1,4 +1,6 @@
 #!usr/bin/python3
+import subprocess
+import platform
 import os
 import cat_service
 
@@ -11,10 +13,11 @@ def main():
     print("Pictures will be saved to: {}".format(output_folder))
     #download cats
     #Website to download images from:
-    url = "http://consuming-python-services-api.azurewebsites.net/content/cats/"
+    url = "http://consuming-python-services-api.azurewebsites.net/cats/random"
     cat_service.save_images(output_folder, url, number_of_images=3)
     #display cats
-
+    display_cats(output_folder)
+	
 def header(character, lengthOfLines, appName):
     header = character*lengthOfLines + "\n\t" +  appName + "\n" + character*lengthOfLines
     return header 
@@ -36,8 +39,10 @@ def display_cats(folder):
         subprocess.call(['open', folder])
     elif platform.system() == 'Linux':
         subprocess.call(['xdg-open', folder])
-    else platform.system() == 'Windows':
+    elif platform.system() == 'Windows':
         subprocess.call(['explorer', folder])
+    else:
+        print("Your system is not supported")
 
 if __name__ == "__main__":
     main()
