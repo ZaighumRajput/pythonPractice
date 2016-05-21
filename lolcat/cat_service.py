@@ -13,8 +13,8 @@ def stream_to_file(filepath, data_stream):
         shutil.copyfileobj(data_stream, fout)
 
 def save_images(path : str, url : str, number_of_images : int):
-    data = open_connection(url) #does the url return one image?
     for count in range(1, number_of_images + 1):
+        data = open_connection(url) #does the url return one image?
         filename = "lolcat{}.jpg".format(count)
         print("Saving {}...".format(filename))
         filepath = os.path.join(path, filename)
