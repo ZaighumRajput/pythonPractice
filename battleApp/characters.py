@@ -11,7 +11,7 @@ class Creature:
 
     def use_powerup(self, Powerups):
         print("using powerup")
-        if Powerups == HealthBoost:
+        if type(Powerups) == type(HealthBoost):
             self.health += Powerups.power()
             print("You used {}, your health is now {}".format(Powerups.name, self.health))
         elif Powerups == StrengthBoost:
